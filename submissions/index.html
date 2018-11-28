@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <!-- Vue, Firebase, VueFire, and Jquery added to page -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/1.4.5/vuefire.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    
+    <!-- javascript and css styling for this page -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" async></script>
+ 
+    <title>Reservation Log</title>
+</head>
+
+<body>
+    <div id="input">
+        <div id="firstName">
+            <input  v-model="firstName" placeholder="First Name">
+        </div>
+        <div id="lastName">
+            <input  v-model="lastName" placeholder="Last Name">
+        </div>
+        <div id="dukeEmail">
+            <input  v-model="dukeEmail" placeholder="Duke Email">
+        </div>
+        <div id="yearAtDuke">
+            <input  v-model="yearAtDuke" placeholder="Graduation Year">
+        </div>
+        <div id="title">
+            <input  v-model="title" placeholder="Title of Work">
+        </div>
+        <div id="medium">
+            <input  v-model="medium" placeholder="Medium">
+        </div>
+        <div id="yearCreated">
+            <input  v-model="yearCreated" placeholder="Year Created">
+        </div>
+        <div id="dimensions">
+            <input  v-model="dimensions" placeholder="Dimensions">
+        </div>
+        <div id="description">
+            <input  v-model="description" placeholder="Description of Work">
+        </div>
+        <div id="photo">
+            <input type="file" name="files" id="files" placeholder="Photo of Work">
+        </div>
+        <select v-model="hardcopy">
+          <option disabled value="Hardcopy or need print?">Hardcopy or need print?</option>
+          <option>Hardcopy</option>
+          <option>Need Print</option>
+        </select>
+        
+        <div id="inputButton">
+            <button @click="storeImage(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy)">Enter</button>
+        </div>
+    </div>
+
+
+</body>
+</html>
