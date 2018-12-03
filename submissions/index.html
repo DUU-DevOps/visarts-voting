@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/1.4.5/vuefire.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <!-- javascript and css styling for this page -->
     <link rel="stylesheet" href="style.css">
     <script src="script.js" async></script>
@@ -17,129 +17,141 @@
 </head>
 
 <body>
-    <div class="center">
-    <div id="input" class="container">
-        <div class="row">
-            <p>VisArts Gallery Submission 2019</p>  
-        </div>
-        <div class="row">
-            
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>First Name:</p>
-                </div>
-                
-                <div class="col-sm-4" id="firstName">
-                    <input  v-model="firstName" placeholder="First Name">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Last Name:</p>
-                </div>
-                
-                <div class="col-sm-4" id="lastName">
-                    <input  v-model="lastName" placeholder="Last Name">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Duke Email:</p>
-                </div>
-                
-                <div class="col-sm-4" id="dukeEmail">
-                    <input  v-model="dukeEmail" placeholder="Duke Email">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Graduation Year:</p>
-                </div>
-                
-                <div class="col-sm-4"id="yearAtDuke">
-                <input  v-model="yearAtDuke" placeholder="Graduation Year">
-                </div>
-            </div>
-             <div class="row">
-                <div class="col-sm-3">
-                    <p>Title of Work:</p>
-                </div>
-                
-                <div class="col-sm-4" id="title">
-                    <input  v-model="title" placeholder="Title of Work">
-                </div>
-            </div>
-             <div class="row">
-                <div class="col-sm-3">
-                    <p>Medium:</p>
-                </div>
-                
-                <div class="col-sm-4" id="medium">
-                    <input  v-model="medium" placeholder="Medium">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Year of Creation:</p>
-                </div>
-                
-                <div class="col-sm-4" id="yearCreated">
-                    <input  v-model="yearCreated" placeholder="Year Created">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Dimensions:</p>
-                </div>
-                
-                <div class="col-sm-4" id="dimensions">
-                    <input  v-model="dimensions" placeholder="Dimensions">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Descripiton:</p>
-                </div>
-                
-                <div class="col-sm-4"id="description">
-                    <textarea v-model="description" cols="30" rows="5">Descripiton of Work</textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Upload Photo of Work:</p>
-                </div>
-                
-                <div class="col-sm-4" id="photo">
-                    <input type="file" name="files" id="files">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Hardcopy or Need Print?</p>
-                </div>
-                
-                <div class="col-sm-4">
-                    <select v-model="hardcopy">
-                      <option>Hardcopy</option>
-                      <option>Need Print</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p>Submit:</p>
-                </div>
-                
-                <div class="col-sm-4" id="inputButton">
-                    <button @click="storeImage(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy)">Enter</button>
-                </div>
-            </div>
-        </div>
+    <div id="header">
+        <p>VisArts Gallery Submission 2019</p>  
     </div>
+    <hr>
+    <div class="content">
+        <div class="post" id="post">
+            <h1>Thank you for your submission! VisArts will be in touch soon.</h1>
+        </div>
+        <div class="main" id="main">
+            <div class="center">
+                <div id="input" class="container">
+                    <div class="row">
+                        <div class="row" id="top">
+                            <div class="col-sm-3">
+                                <p>First Name:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="firstName">
+                                <input  v-model="firstName" placeholder="First Name">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Last Name:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="lastName">
+                                <input  v-model="lastName" placeholder="Last Name">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Duke Email:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="dukeEmail">
+                                <input  v-model="dukeEmail" placeholder="Duke Email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Current Grade:</p>
+                            </div>
+
+                            <div class="col-sm-4"id="yearAtDuke">
+                                <select v-model="yearAtDuke">
+                                  <option>First Year</option>
+                                  <option>Sophomore</option>
+                                  <option>Junior</option>
+                                  <option>Senior</option>
+                                </select>
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="col-sm-3">
+                                <p>Title of Work:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="title">
+                                <input  v-model="title" placeholder="Title of Work">
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="col-sm-3">
+                                <p>Medium:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="medium">
+                                <input  v-model="medium" placeholder="Medium">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Year of Creation:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="yearCreated">
+                                <input  v-model="yearCreated" placeholder="Year Created">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Dimensions:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="dimensions">
+                                <input  v-model="dimensions" placeholder="Dimensions">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Description:</p>
+                            </div>
+
+                            <div class="col-sm-4"id="description">
+                                <textarea v-model="description" cols="30" rows="5">Descripiton of Work</textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Upload Photo of Work:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="photo">
+                                <input type="file" name="files" id="files">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Hardcopy or Need Print?</p>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <select v-model="hardcopy">
+                                  <option>Hardcopy</option>
+                                  <option>Need Print</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Submit:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="inputButton">
+                                <button @click="storeImage(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy)">Enter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>

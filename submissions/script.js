@@ -49,7 +49,7 @@ var app = new Vue({
             // get input element user used to select local image
             var input = document.getElementById('files');
             // have all fields in the form been completed
-            if (input.files.length > 0) {
+            if (input.files.length > 0 || true) {
                 var file = input.files[0];
                 // get reference to a storage location and
                 var refLoc = storageRef.child('images/' + file.name);
@@ -82,6 +82,8 @@ var app = new Vue({
                            });
                 // reset input values so user knows to input new data
                 input.value = '';
+                document.getElementById("main").style.display = "none";
+                document.getElementById("post").style.display = "inline";
             }
         }
     }
