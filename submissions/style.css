@@ -1,6 +1,9 @@
 p, input, h1{
     font-family: 'Montserrat', sans-serif;
 }
+body{
+    overflow: hidden;
+}
 .content{
     width: 100%;
     height: 100vh;
@@ -23,7 +26,7 @@ hr{
     padding: 0;
 }
 #header p{
-    font-size: 200%;
+    font-size: 150%;
     text-align: center;
     margin: auto;
     width: 50%;
@@ -57,4 +60,7 @@ button:focus {
 button{
     width: 30%;
     border: 2px solid gray;
+}
+#header .row{
+    height: 10vh;
 }
