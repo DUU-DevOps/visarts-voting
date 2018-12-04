@@ -1,9 +1,8 @@
 p, input, h1{
     font-family: 'Montserrat', sans-serif;
 }
-.center {
-    margin: auto;
-    width: 50%;
+body{
+    overflow: hidden;
 }
 .content{
     width: 100%;
@@ -13,8 +12,8 @@ p, input, h1{
     padding: 0;
 }
 .col-sm-3{
-    margin-top: .5%;
-    margin-bottom: .5%;
+    margin-top: .25%;
+    margin-bottom: .25%;
 }
 #header{
     background-color: white;
@@ -27,7 +26,7 @@ hr{
     padding: 0;
 }
 #header p{
-    font-size: 225%;
+    font-size: 150%;
     text-align: center;
     margin: auto;
     width: 50%;
@@ -45,4 +44,23 @@ hr{
     padding: 10%;
     background-color: ghostwhite;
     text-align: center;
+}
+#main{
+    margin: auto;
+    width: 45%;
+}
+#header img{
+    padding-top: 10%;
+    width: 100%;
+}
+button:hover,
+button:focus {
+    background: gray;
+}
+button{
+    width: 30%;
+    border: 2px solid gray;
+}
+#header .row{
+    height: 10vh;
 }

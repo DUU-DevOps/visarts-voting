@@ -17,9 +17,21 @@
 </head>
 
 <body>
-    <div id="header">
-        <p>DUU VisArts Spring Showcase Submissions 2019</p>  
+
+    <div class="container" id="header">
+        <div class="row">
+            <div class="col-sm-1 col-1" id="logoTL">
+                <img src="visarts.png">
+            </div>
+            <div class="col-sm-10 col-10">
+                <p>DUU VisArts Spring Showcase Submissions 2019</p> 
+            </div> 
+            <div class="col-sm-1 col-1" id="logoTR">
+                <img src="visarts.png">
+            </div>
+        </div>
     </div>
+    
     <hr>
     <div class="content">
         <div class="post" id="post">
@@ -51,11 +63,11 @@
 
                         <div class="row">
                             <div class="col-sm-3">
-                                <p>Duke Email:</p>
+                                <p>Duke Email with NetID (abc58@duke.edu):</p>
                             </div>
 
                             <div class="col-sm-4" id="dukeEmail">
-                                <input  v-model="dukeEmail" placeholder="Duke Email">
+                                <input  v-model="dukeEmail" placeholder="Email with NetID">
                             </div>
                         </div>
 

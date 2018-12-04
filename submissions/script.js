@@ -49,7 +49,8 @@ var app = new Vue({
             // get input element user used to select local image
             var input = document.getElementById('files');
             // have all fields in the form been completed
-            if (input.files.length > 0 || true) {
+            var validInput = this.checkInput(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy);
+            if (validInput && input.files > 0) {
                 var file = input.files[0];
                 // get reference to a storage location and
                 var refLoc = storageRef.child('images/' + file.name);
@@ -58,7 +59,6 @@ var app = new Vue({
                           .then(snapshot => {
                                return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
                            })
-
                            .then(downloadURL => {
                                 db.ref('/').push({
                                     firstName: firstName,
@@ -85,6 +85,17 @@ var app = new Vue({
                 document.getElementById("main").style.display = "none";
                 document.getElementById("post").style.display = "inline";
             }
+        },
+        checkInput: function(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy){
+            var inputs = [firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy];
+            
+            for (var x=0; x < inputs.length; x++){
+                if (inputs[x] === null || inputs[x].length < 1){
+                    alert("Invalid input. Please check all fields and resubmit");
+                    return false;
+                }
+            }
+            return true;
         }
     }
 })
