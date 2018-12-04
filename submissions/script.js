@@ -50,7 +50,11 @@ var app = new Vue({
             var input = document.getElementById('files');
             // have all fields in the form been completed
             var validInput = this.checkInput(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy);
-            if (validInput && input.files > 0) {
+            if (input.files < 1){
+                alert("Error: Invalid Input. Please upload a file.");
+                return;
+            }
+            if (validInput) {
                 var file = input.files[0];
                 // get reference to a storage location and
                 var refLoc = storageRef.child('images/' + file.name);
@@ -84,6 +88,9 @@ var app = new Vue({
                 input.value = '';
                 document.getElementById("main").style.display = "none";
                 document.getElementById("post").style.display = "inline";
+            }
+            else{
+                alert("Invalid Input: Please ensure all information is correct and resubmit.")
             }
         },
         checkInput: function(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy){
