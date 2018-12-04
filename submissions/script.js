@@ -50,8 +50,8 @@ var app = new Vue({
             var input = document.getElementById('files');
             // have all fields in the form been completed
             var validInput = this.checkInput(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy);
-            if (input.files < 1){
-                alert("Error: Invalid Input. Please upload a file.");
+            if (typeof input.files[0] === "undefined"){
+                alert("Invalid Input. Please upload a file.");
                 return;
             }
             if (validInput) {
@@ -88,9 +88,6 @@ var app = new Vue({
                 input.value = '';
                 document.getElementById("main").style.display = "none";
                 document.getElementById("post").style.display = "inline";
-            }
-            else{
-                alert("Invalid Input: Please ensure all information is correct and resubmit.")
             }
         },
         checkInput: function(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy){
