@@ -18,7 +18,7 @@
 
 <body>
     <div id="header">
-        <p>DUU VisArts Spring Showcase Submissions 2019</p>  
+        <p>DUU VisArts Spring Showcase Voting 2019</p>  
     </div>
     <hr>
     <div class="content">
@@ -31,122 +31,91 @@
                     <div class="row">
                         <div class="row" id="top">
                             <div class="col-sm-3">
-                                <p>First Name:</p>
+                                <p>Artwork:</p>
                             </div>
 
-                            <div class="col-sm-4" id="firstName">
-                                <input  v-model="firstName" placeholder="First Name">
+                            <div class="col-sm-4" id="url">
+                                <img src="smiley.jpg" style="width:50px;">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-3">
-                                <p>Last Name:</p>
-                            </div>
-
-                            <div class="col-sm-4" id="lastName">
-                                <input  v-model="lastName" placeholder="Last Name">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p>Duke Email:</p>
-                            </div>
-
-                            <div class="col-sm-4" id="dukeEmail">
-                                <input  v-model="dukeEmail" placeholder="Duke Email">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p>Current Grade:</p>
-                            </div>
-
-                            <div class="col-sm-4"id="yearAtDuke">
-                                <select v-model="yearAtDuke">
-                                  <option>First Year</option>
-                                  <option>Sophomore</option>
-                                  <option>Junior</option>
-                                  <option>Senior</option>
-                                  <option>Graduate/Professional</option>
-                                </select>
-                            </div>
-                        </div>
-                         <div class="row">
-                            <div class="col-sm-3">
-                                <p>Title of Work:</p>
+                                <p>Title:</p>
                             </div>
 
                             <div class="col-sm-4" id="title">
-                                <input  v-model="title" placeholder="Title of Work">
+                                <p>The Mona Lisa</p>
                             </div>
                         </div>
-                         <div class="row">
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Artist:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="netID">
+                                <p>Leonardo da Vinci</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-sm-3">
                                 <p>Medium:</p>
                             </div>
 
                             <div class="col-sm-4" id="medium">
-                                <input  v-model="medium" placeholder="Medium">
+                                <p>Watercolor:</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p>Year of Creation:</p>
-                            </div>
 
-                            <div class="col-sm-4" id="yearCreated">
-                                <input  v-model="yearCreated" placeholder="Year Created">
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <p>Dimensions:</p>
                             </div>
 
                             <div class="col-sm-4" id="dimensions">
-                                <input  v-model="dimensions" placeholder="Dimensions">
+                                <p>9 x 10</p>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-sm-3">
                                 <p>Description:</p>
                             </div>
 
-                            <div class="col-sm-4"id="description">
-                                <textarea v-model="description" cols="30" rows="5">Descripiton of Work</textarea>
+                            <div class="col-sm-4" id="description">
+                                <p>A painting</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p>Upload Photo of Work:</p>
-                            </div>
 
-                            <div class="col-sm-4" id="photo">
-                                <input type="file" name="files" id="files">
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p>Hardcopy or Need Print?</p>
+                                <p>Your Rating:</p>
                             </div>
 
                             <div class="col-sm-4">
-                                <select v-model="hardcopy">
-                                  <option>Hardcopy</option>
-                                  <option>Need Print</option>
-                                </select>
+                                <input type="radio" id="star5" name="rating" value="5" />
+                                <input type="radio" id="star4" name="rating" value="4" />
+                                <input type="radio" id="star3" name="rating" value="3" />
+                                <input type="radio" id="star2" name="rating" value="2" />
+                                <input type="radio" id="star1" name="rating" value="1" />
+                                <br>
+                                <label for="star5" title="Rocks!">5</label>
+                                <label for="star4" title="Rocks!">4</label>
+                                <label for="star3" title="Rocks!">3</label>
+                                <label for="star2" title="Rocks!">2</label>
+                                <label for="star1" title="Sucks big time">1</label>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-sm-3">
                                 <p>Submit:</p>
                             </div>
 
                             <div class="col-sm-4" id="inputButton">
-                                <button @click="storeImage(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy)">Enter</button>
+                                <button @click="storeVote(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy)">Enter</button>
                             </div>
                         </div>
                     </div>
