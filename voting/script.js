@@ -10,6 +10,11 @@ var config = {
 var db = firebase.initializeApp(config).database();
 var storageRef = firebase.storage().ref();
 var imagesRef = db.ref('images');
+var todoRef = db.ref('visartssubmissions-67e5b');
+
+todoRef.on('child_added', function(data){
+    console.log(data);
+})
 
 Vue.use(VueFire);
 
@@ -32,59 +37,15 @@ var app = new Vue({
         };
     },
     firebase: {
-        images: imagesRef
+        images: imagesRef,
+        
     },
     methods: {
-        addImage: function(title, url) {
-            // now that image has been stored in Firebase, create a reference to it in database
-            console.log("called");
-            imagesRef.push({
-                title: title,
-                url: url
-            });
-            // reset input values so user knows to input new data
-            this.newImageTitle = '';
+        add: function() {
+            console.log(this.rating);
         },
-        storeImage: function(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy) {
-            // get input element user used to select local image
-            var input = document.getElementById('files');
-            // have all fields in the form been completed
-            if (input.files.length > 0 || true) {
-                var file = input.files[0];
-                // get reference to a storage location and
-                var refLoc = storageRef.child('images/' + file.name);
-                storageRef.child('images/' + file.name)
-                          .put(file)
-                          .then(snapshot => {
-                               return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
-                           })
-
-                           .then(downloadURL => {
-                                db.ref('/').push({
-                                    firstName: firstName,
-                                    lastName: lastName, 
-                                    dukeEmail: dukeEmail,
-                                    netID: dukeEmail.split("@")[0],
-                                    yearAtDuke: yearAtDuke,
-                                    title: title,
-                                    medium: medium,
-                                    yearCreated: yearCreated,
-                                    dimensions: dimensions,
-                                    description: description,
-                                    hardcopy: hardcopy,
-                                    votes: 0,
-                                    fileName: file.name,
-                                    url: downloadURL
-                                });
-                           })
-                           .catch(error => {
-                              console.log(`Failed to upload file and get link - ${error}`);
-                           });
-                // reset input values so user knows to input new data
-                input.value = '';
-                document.getElementById("main").style.display = "none";
-                document.getElementById("post").style.display = "inline";
-            }
+        remove: function(){
+            console.log("Removed a vote");
         }
     }
 })

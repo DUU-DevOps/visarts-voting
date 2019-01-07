@@ -30,13 +30,14 @@
                 <div id="input" class="container">
                     <div class="row">
                         <div class="row" id="top">
-                            <div class="col-sm-3">
+                            <!-- <div class="col-sm-3">
                                 <p>Artwork:</p>
                             </div>
 
                             <div class="col-sm-4" id="url">
                                 <img src="smiley.jpg" style="width:50px;">
-                            </div>
+                            </div> -->
+                            <img src="smiley.jpg" style="width:70px;">
                         </div>
 
                         <div class="row">
@@ -65,7 +66,7 @@
                             </div>
 
                             <div class="col-sm-4" id="medium">
-                                <p>Watercolor:</p>
+                                <p>Watercolor</p>
                             </div>
                         </div>
 
@@ -95,11 +96,11 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <input type="radio" id="star5" name="rating" value="5" />
-                                <input type="radio" id="star4" name="rating" value="4" />
-                                <input type="radio" id="star3" name="rating" value="3" />
-                                <input type="radio" id="star2" name="rating" value="2" />
-                                <input type="radio" id="star1" name="rating" value="1" />
+                                <input type="radio" v-model="rating" id="star5" name="rating" value="5" />
+                                <input type="radio" v-model="rating" id="star4" name="rating" value="4" />
+                                <input type="radio" v-model="rating" id="star3" name="rating" value="3" />
+                                <input type="radio" v-model="rating" id="star2" name="rating" value="2" />
+                                <input type="radio" v-model="rating" id="star1" name="rating" value="1" />
                                 <br>
                                 <label for="star5" title="Rocks!">5</label>
                                 <label for="star4" title="Rocks!">4</label>
@@ -115,7 +116,7 @@
                             </div>
 
                             <div class="col-sm-4" id="inputButton">
-                                <button @click="storeVote(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy)">Enter</button>
+                                <button v-on:click="add">Enter</button>
                             </div>
                         </div>
                     </div>
