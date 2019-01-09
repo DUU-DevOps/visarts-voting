@@ -50,7 +50,11 @@ var app = new Vue({
             var input = document.getElementById('files');
             // have all fields in the form been completed
             var validInput = this.checkInput(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy);
-            if (validInput && input.files > 0) {
+            if (typeof input.files[0] === "undefined"){
+                alert("Invalid Input. Please upload a file.");
+                return;
+            }
+            if (validInput) {
                 var file = input.files[0];
                 // get reference to a storage location and
                 var refLoc = storageRef.child('images/' + file.name);
