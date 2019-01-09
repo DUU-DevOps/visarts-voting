@@ -29,6 +29,15 @@
             <div class="center">
                 <div id="input" class="container">
                     <div class="row">
+                        
+                        <div class="row" id="top">
+                            <ul id="example-2">
+                              <li v-for="item in childDataVue">
+                                <h1>{{item}}</h1>
+                              </li>
+                            </ul>
+                        </div>
+                        
                         <div class="row" id="top">
                             <!-- <div class="col-sm-3">
                                 <p>Artwork:</p>
@@ -38,6 +47,7 @@
                                 <img src="smiley.jpg" style="width:50px;">
                             </div> -->
                             <img src="smiley.jpg" style="width:70px;">
+                            <p @click="main">click</p>
                         </div>
 
                         <div class="row">
@@ -94,7 +104,7 @@
                             <div class="col-sm-3">
                                 <p>Your Rating:</p>
                             </div>
-
+                            <!--
                             <div class="col-sm-4">
                                 <input type="radio" v-model="rating" id="star5" name="rating" value="5" />
                                 <input type="radio" v-model="rating" id="star4" name="rating" value="4" />
@@ -108,6 +118,7 @@
                                 <label for="star2" title="Rocks!">2</label>
                                 <label for="star1" title="Sucks big time">1</label>
                             </div>
+                            -->
                         </div>
 
                         <div class="row">

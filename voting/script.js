@@ -8,14 +8,11 @@ var config = {
 };
 
 var db = firebase.initializeApp(config).database();
-var storageRef = firebase.storage().ref();
-var imagesRef = db.ref('images');
-var todoRef = db.ref('visartssubmissions-67e5b');
+var dbRef = db.ref();
 
-todoRef.on('child_added', function(data){
-    console.log(data);
-})
-
+var childData = [];
+var childDataCount = 0;
+    
 Vue.use(VueFire);
 
 var app = new Vue({
@@ -33,12 +30,11 @@ var app = new Vue({
             description: null,
             photo: null,
             hardcopy: null,
-            newImageTitle: ''
+            newImageTitle: '',
+            childDataVue: childData
         };
     },
     firebase: {
-        images: imagesRef,
-        
     },
     methods: {
         add: function() {
@@ -46,7 +42,16 @@ var app = new Vue({
         },
         remove: function(){
             console.log("Removed a vote");
-        }
+        },
+        main: function(){
+            dbRef.once("value")
+              .then(function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                  childData[childDataCount++] = childSnapshot.val();
+                });
+              });  
+            console.log(typeof(childData));
+        },
     }
 })
 app.$mount('#input')
