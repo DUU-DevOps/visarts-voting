@@ -28,65 +28,16 @@
         <div class="main" id="main">
             <div class="center">
                 <div id="input" class="container">
-                    <div class="row">
+                    <div v-for="a in artInfo" class="row">
                         
                         <div class="row" id="top">
-                            <ul id="example-2">
-                              <li v-for="item in childDataVue">
-                                <h1>{{item}}</h1>
-                              </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="row" id="top">
-                            <!-- <div class="col-sm-3">
-                                <p>Artwork:</p>
-                            </div>
-
-                            <div class="col-sm-4" id="url">
-                                <img src="smiley.jpg" style="width:50px;">
-                            </div> -->
-                            <img src="smiley.jpg" style="width:70px;">
-                            <p @click="main">click</p>
-                        </div>
-
-                        <div class="row">
                             <div class="col-sm-3">
-                                <p>Title:</p>
+                                <p>Image:</p>
                             </div>
 
-                            <div class="col-sm-4" id="title">
-                                <p>The Mona Lisa</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p>Artist:</p>
-                            </div>
-
-                            <div class="col-sm-4" id="netID">
-                                <p>Leonardo da Vinci</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p>Medium:</p>
-                            </div>
-
-                            <div class="col-sm-4" id="medium">
-                                <p>Watercolor</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p>Dimensions:</p>
-                            </div>
-
-                            <div class="col-sm-4" id="dimensions">
-                                <p>9 x 10</p>
+                            <div class="col-sm-4" id="image">
+                                <!-- <iframe src="{{a.url}}"></iframe> -->
+                                <p>{{a.url}}</p>0
                             </div>
                         </div>
 
@@ -96,7 +47,57 @@
                             </div>
 
                             <div class="col-sm-4" id="description">
-                                <p>A painting</p>
+                                <p>{{a.description}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Title:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="title">
+                                <p v-model="firstName">{{a.title}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Artist:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="netID">
+                                <p>{{a.firstName}} {{a.lastName}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Medium:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="medium">
+                                <p>{{a.medium}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Dimensions:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="dimensions">
+                                <p>{{a.dimensions}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p>Description:</p>
+                            </div>
+
+                            <div class="col-sm-4" id="description">
+                                <p>{{a.description}}</p>
                             </div>
                         </div>
 
@@ -121,7 +122,9 @@
                             -->
                         </div>
 
-                        <div class="row">
+
+                        <!-- SUBMIT BUTTON -->
+                        <!-- <div class="row">
                             <div class="col-sm-3">
                                 <p>Submit:</p>
                             </div>
@@ -129,7 +132,7 @@
                             <div class="col-sm-4" id="inputButton">
                                 <button v-on:click="add">Enter</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

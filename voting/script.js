@@ -10,9 +10,9 @@ var config = {
 var db = firebase.initializeApp(config).database();
 var dbRef = db.ref();
 
-var childData = [];
+var childData = []
 var childDataCount = 0;
-    
+
 Vue.use(VueFire);
 
 var app = new Vue({
@@ -35,6 +35,8 @@ var app = new Vue({
         };
     },
     firebase: {
+        artInfo: dbRef,
+        
     },
     methods: {
         add: function() {
@@ -50,7 +52,7 @@ var app = new Vue({
                   childData[childDataCount++] = childSnapshot.val();
                 });
               });  
-            console.log(typeof(childData));
+              console.log(childData);
         },
     }
 })
