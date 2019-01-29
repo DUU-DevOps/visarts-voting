@@ -46,3 +46,6 @@ hr{
     background-color: ghostwhite;
     text-align: center;
 }
+#slideshow{
+    display: none;
+}
