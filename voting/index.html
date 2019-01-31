@@ -34,11 +34,6 @@
                         <button @click="initializeSlides()">Start Voting</button>
                     </div>
                     <div id="slideshow">
-                        
-                        <div class="row" id="top" style="align-content: center;">
-                            <button @click="nextSlide(-1)">Previous</button>
-                            <button @click="nextSlide(1)">Next</button>
-                        </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <p>Image (click to enlarge):</p>
@@ -103,6 +98,21 @@
                             <div class="col-sm-3">
                                 <p>Your Rating:</p>
                             </div>
+                            <input type="radio" id="one" value="1" v-model="score">
+                            <label for="one">1</label>
+                            <input type="radio" id="two" value="2" v-model="score">
+                            <label for="two">2</label>
+                            <input type="radio" id="three" value="3" v-model="score">
+                            <label for="three">3</label>
+                            <input type="radio" id="four" value="4" v-model="score">
+                            <label for="four">4</label>
+                            <input type="radio" id="five" value="5" v-model="score">
+                            <label for="five">5</label>
+                            <button v-on:click="vote(score, netID)">Vote and Submit</button>
+                        </div>
+                        <div class="row" id="top" style="align-content: center;">
+                            <button @click="nextSlide(-1)">Previous</button>
+                            <button @click="nextSlide(1)">Next</button>
                         </div>
                     </div>                        
                         

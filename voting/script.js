@@ -1,5 +1,3 @@
-
-
 var config = {
     apiKey: "AIzaSyC4B3UpwTcv33YV8_mnUk7O90cQwhZd_CE",
     authDomain: "visartssubmissions-67e5b.firebaseapp.com",
@@ -42,6 +40,8 @@ var app = new Vue({
             hardcopy: '',
             newImageTitle: '',
             url: '',
+            score:0,
+            netID: 'placeholder'
         };
     },
     firebase: {
@@ -59,6 +59,7 @@ var app = new Vue({
               this.description = childData[0].description;
               this.medium = childData[0].medium;
               this.dimensions = childData[0].dimensions;
+              this.netID = childData[0].netID;
         },
         nextSlide(n){
               iter = iter + n;
@@ -75,8 +76,25 @@ var app = new Vue({
               this.description = childData[iter].description;
               this.medium = childData[iter].medium;
               this.dimensions = childData[iter].dimensions;
-              
+              this.netID = childData[iter].netID;
         },
+        updateScore(keyVal, score){
+            console.log(keyVal);
+            dbRef.child(keyVal).child("votes").transaction(function (count) {
+                count = count + parseInt(score);
+                return count;
+            });  
+        },
+        vote(score, netID){
+            dbRef.once("value")
+                .then(function(snapshot) { snapshot.forEach(function(childSnapshot) {
+                    if (childSnapshot.val().netID === netID){
+                        app.updateScore(childSnapshot.key, score);
+                    }
+                });
+            });
+            app.nextSlide(1);
+        }
     }
 })
 app.$mount('#input')
