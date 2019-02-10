@@ -92,7 +92,7 @@ var app = new Vue({
                                 });
                            })
                            .catch(error => {
-                              console.log(`Failed to upload file and get link - ${error}`);
+                              alert("There was an error with your submission. Please reach out to duuvisarts@gmail.com")
                            });
                 // reset input values so user knows to input new data
                 input.value = '';

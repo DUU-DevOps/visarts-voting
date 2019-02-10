@@ -14,8 +14,8 @@
 1. Timestamp is included. Operates on a 24 hour clock i.e. 3 PM is 15:00
 2. Added alert that all fields must be inputted correctly. Data will only be sent to database if all fields are valid. Initially set values to empty strings rather than null to prevent errors with Firebase as well. 
 3. Averages have been added to database as voteAvg field.
-4.
-5. 
+4. Votes, number of voters, and average score has been added to the spreadsheet
+5. Sending emails requires a server, which can be expensive. We added an algorithm that ensures the submission was successful. If the submission was not successful, the submitters is alerted and told to contact duuvisarts@gmail.com
 6. Note was added above button.
 7. Artist names have been hidden.
 8. Database has been reset.
