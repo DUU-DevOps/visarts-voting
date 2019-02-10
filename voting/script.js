@@ -107,10 +107,11 @@ var app = new Vue({
             this.dimensions = childData[iter].dimensions;
             this.netID = childData[iter].netID;
           },
-          vote(score, netID){
+          vote(score, title){
+            console.log(score + " " + title)
             dbRef.once("value")
             .then(function(snapshot) { snapshot.forEach(function(childSnapshot) {
-              if (childSnapshot.val().netID === netID){
+              if (childSnapshot.val().title === title){
                 app.updateScore(childSnapshot.key, score);
               }
             });
@@ -131,7 +132,7 @@ var app = new Vue({
                 //   ctr++;
                 // })
                 // csvContent += "\r\n";
-                rowArray = [el.firstName, el.lastName, el.title, el.url, "\"" + el.description.replace(/"/g, '\\"') + "\"", el.medium, el.dimensions, el.numVotes, el.voteTotal, el.voteAvg, el.netID];
+                rowArray = [el.firstName, el.lastName, el.title, el.url, "\"" + el.description.replace(/"/g, '\\"').replace(/[\r\n]/g, " ") + "\"", el.medium, el.dimensions, el.numVotes, el.voteTotal, el.voteAvg, el.netID];
                 let row = rowArray.join(",");
                 csvContent += row + '\r\n';
               }); 
