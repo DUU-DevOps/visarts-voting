@@ -100,7 +100,10 @@
                             <label for="five">5</label>
                             <button v-on:click="vote(score, netID)">Vote and Submit</button>
                         </div>
+                        <br>
+                        <br>
                         <div class="row" id="top" style="align-content: center;">
+                            <p>Use the buttons below to cycle through images without voting.</p>
                             <button @click="nextSlide(-1)">Previous</button>
                             <button @click="nextSlide(1)">Next</button>
                         </div>
@@ -108,6 +111,8 @@
                         <br>
                         <br>
                         <button @click="downloadCSV()">Download Spreadsheet</button>
+                        <br>
+                        <br>
                         <br>
                     </div>                        
                         
