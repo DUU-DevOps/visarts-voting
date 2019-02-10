@@ -1,0 +1,16 @@
+1. Include timestamps in database
+2. Submission algorithm - multiple submissions lead to missing data
+	a. Replacing rather than updating?
+	b. Improper/Invalid data that can’t be resolved -> database error?
+3. Averages for voting
+4. Add votes, number of voters, and average score to spreadsheet
+5. Confirmation email with what piece went through add to “Thank you for your submission. You will receive a confirmation email soon. if you do not reached out to duuvisarts@gmail.com. Thank you!”
+6. Clear up confusion between “Vote and Submit” button and “Next” button
+7. Hide artist names from voting site
+8. Reset number of votes in the database
+
+-- Updates --
+
+1. Timestamp is included. Operates on a 24 hour clock i.e. 3 PM is 15:00
+2. Added alert that all fields must be inputted correctly. Data will only be sent to database if all fields are valid. Initially set values to empty strings rather than null to prevent errors with Firebase as well. 
+3. Averages have been added to database as voteAvg field.

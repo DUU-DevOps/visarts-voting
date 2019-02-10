@@ -17,18 +17,18 @@ var app = new Vue({
     el: "#input",
     data: function(){
         return {
-            firstName: null,
-            lastName: null,  //TODO: NEED TO ENSURE THERE ARE NO SPACES
-            dukeEmail: null,
-            yearAtDuke: null,
-            title: null,
-            medium: null,
-            yearCreated: null,
-            dimensions: null,
-            description: null,
-            photo: null,
-            hardcopy: null,
-            newImageTitle: ''
+            firstName: "",
+            lastName: "",  //TODO: NEED TO ENSURE THERE ARE NO SPACES
+            dukeEmail: "",
+            yearAtDuke: "",
+            title: "",
+            medium: "",
+            yearCreated: "",
+            dimensions: "",
+            description: "",
+            photo: "",
+            hardcopy: "",
+            newImageTitle: ""
         };
     },
     firebase: {
@@ -58,6 +58,13 @@ var app = new Vue({
                 var file = input.files[0];
                 // get reference to a storage location and
                 var refLoc = storageRef.child('images/' + file.name);
+                var currentdate = new Date(); 
+                var datetime =  (currentdate.getMonth()+1)  + "/"
+                                + currentdate.getDate() + "/"
+                                + currentdate.getFullYear() + " at "  
+                                + currentdate.getHours() + ":"  
+                                + currentdate.getMinutes();
+                
                 storageRef.child('images/' + file.name)
                           .put(file)
                           .then(snapshot => {
@@ -76,9 +83,12 @@ var app = new Vue({
                                     dimensions: dimensions,
                                     description: description,
                                     hardcopy: hardcopy,
-                                    votes: 0,
+                                    voteTotal: 0,
+                                    numVotes: 0,
+                                    voteAvg: 0,
                                     fileName: file.name,
-                                    url: downloadURL
+                                    url: downloadURL,
+                                    timeStamp: datetime
                                 });
                            })
                            .catch(error => {

@@ -79,11 +79,33 @@ var app = new Vue({
               this.netID = childData[iter].netID;
         },
         updateScore(keyVal, score){
-            console.log(keyVal);
-            dbRef.child(keyVal).child("votes").transaction(function (count) {
+            //console.log(keyVal);
+            dbRef.child(keyVal).child("voteTotal").transaction(function (count) {
                 count = count + parseInt(score);
                 return count;
             });  
+            dbRef.child(keyVal).child("numVotes").transaction(function (count) {
+                count = count + 1
+                return count;
+            });
+            this.calculateAvg(keyVal);
+        },
+        calculateAvg(keyVal){
+            var dbLoc = db.ref(keyVal);
+            var numVotes = 0;
+            var voteTotal = 0;
+            
+            dbLoc.on('value', function(snapshot) {
+                numVotes = parseFloat(snapshot.val().numVotes);
+                voteTotal = parseFloat(snapshot.val().voteTotal);
+            });
+            
+            if (numVotes != 0 && voteTotal != 0){
+                voteAvg = (voteTotal / numVotes).toFixed(2);
+                dbLoc.update({
+                    voteAvg : voteAvg
+                });
+            }
         },
         vote(score, netID){
             dbRef.once("value")
