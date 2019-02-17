@@ -122,7 +122,7 @@ var app = new Vue({
               keys = Object.keys(childData[0]);
 
               let csvContent = "data:text/csv;charset=utf-8,";
-              csvContent += 'First Name,Last Name,Title,Photo URL,Description,Medium,Dimensions,Number of Votes, Total Votes, Vote Average,NetID\r\n'
+              csvContent += 'First Name,Last Name,Title,Photo URL,Description,Medium,Dimensions,Hardcopy Need Print,Number of Votes, Total Votes, Vote Average,NetID\r\n'
               childData.forEach(function(el){
                 // ctr = 0;
                 // keys.forEach(function(key){
@@ -132,7 +132,7 @@ var app = new Vue({
                 //   ctr++;
                 // })
                 // csvContent += "\r\n";
-                rowArray = [el.firstName, el.lastName, el.title, el.url, "\"" + el.description.replace(/"/g, '\\"').replace(/[\r\n]/g, " ") + "\"", el.medium, el.dimensions, el.numVotes, el.voteTotal, el.voteAvg, el.netID];
+                rowArray = [el.firstName, el.lastName, el.title, el.url, "\"" + el.description.replace(/"/g, '\\"').replace(/[\r\n]/g, " ") + "\"", el.medium, el.dimensions, el.hardcopy, el.numVotes, el.voteTotal, el.voteAvg, el.netID];
                 let row = rowArray.join(",");
                 csvContent += row + '\r\n';
               }); 
