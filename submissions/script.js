@@ -72,23 +72,30 @@ var app = new Vue({
                            })
                            .then(downloadURL => {
                                 db.ref('/').push({
-                                    firstName: firstName,
-                                    lastName: lastName, 
-                                    dukeEmail: dukeEmail,
-                                    netID: dukeEmail.split("@")[0],
-                                    yearAtDuke: yearAtDuke,
-                                    title: title,
-                                    medium: medium,
-                                    yearCreated: yearCreated,
-                                    dimensions: dimensions,
-                                    description: description,
-                                    hardcopy: hardcopy,
+                                    firstName: this.clean(firstName, false),
+                                    lastName: this.clean(lastName, false), 
+                                    dukeEmail: this.clean(dukeEmail, true),
+                                    netID: this.clean(dukeEmail, true).split("@")[0],
+                                    yearAtDuke: this.clean(yearAtDuke, false),
+                                    title: this.clean(title, false),
+                                    medium: this.clean(medium, false),
+                                    yearCreated: this.clean(yearCreated, false),
+                                    dimensions: this.clean(dimensions, false),
+                                    description: this.clean(description, false),
+                                    hardcopy: this.clean(hardcopy, false),
                                     voteTotal: 0,
                                     numVotes: 0,
                                     voteAvg: 0,
                                     fileName: file.name,
                                     url: downloadURL,
                                     timeStamp: datetime
+                                }, function(error) {
+                                      if (error){
+                                        alert("Error: There was a problem with your submission");
+                                      } 
+                                      else {
+                                        app.sendemail(firstName, lastName, title, dukeEmail);
+                                      }
                                 });
                            })
                            .catch(error => {
@@ -96,6 +103,7 @@ var app = new Vue({
                            });
                 // reset input values so user knows to input new data
                 input.value = '';
+                
                 document.getElementById("main").style.display = "none";
                 document.getElementById("post").style.display = "inline";
             }
@@ -110,6 +118,27 @@ var app = new Vue({
                 }
             }
             return true;
+        },
+        clean(word, isEmail){
+            if (isEmail){
+                word = word.replace(/[^A-Za-z0-9@. ]/g, " ") 
+            }
+            else{
+                word = word.replace(/[^A-Za-z0-9.?! ]/g, " ") 
+            }
+            return word
+        },
+        sendemail(firstName, lastName, title, dukeEmail){
+            var template_params = {
+               "to_email": dukeEmail,
+               "reply_to": "duudevops@gmail.com",
+               "to_name": firstName + " " + lastName,
+               "title": title
+            }
+
+            var service_id = "default_service";
+            var template_id = "template_38GFeTtz";
+            emailjs.send(service_id, template_id, template_params);
         }
     }
 })
