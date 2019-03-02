@@ -55,6 +55,7 @@ var app = new Vue({
                 return;
             }
             if (validInput) {
+                
                 var file = input.files[0];
                 // get reference to a storage location and
                 var refLoc = storageRef.child('images/' + file.name);
@@ -95,6 +96,9 @@ var app = new Vue({
                                       } 
                                       else {
                                         app.sendemail(firstName, lastName, title, dukeEmail);
+                                            input.value = '';
+                                            document.getElementById("main").style.display = "none";
+                                            document.getElementById("post").style.display = "inline";
                                       }
                                 });
                            })
@@ -102,10 +106,7 @@ var app = new Vue({
                               alert("There was an error with your submission. Please reach out to duuvisarts@gmail.com")
                            });
                 // reset input values so user knows to input new data
-                input.value = '';
                 
-                document.getElementById("main").style.display = "none";
-                document.getElementById("post").style.display = "inline";
             }
         },
         checkInput: function(firstName, lastName, dukeEmail, yearAtDuke, title, medium, yearCreated, dimensions, description, hardcopy){
@@ -117,14 +118,18 @@ var app = new Vue({
                     return false;
                 }
             }
+            if (!dukeEmail.includes("@")){
+                alert("Please enter a valid email (e.g. abc123@duke.edu).");
+                return false;
+            }
             return true;
         },
         clean(word, isEmail){
             if (isEmail){
-                word = word.replace(/[^A-Za-z0-9@. ]/g, " ") 
+                word = word.replace(/[^A-Za-z0-9@., ]/g, " ") 
             }
             else{
-                word = word.replace(/[^A-Za-z0-9.?! ]/g, " ") 
+                word = word.replace(/[^A-Za-z0-9.?!, ]/g, " ") 
             }
             return word
         },
